@@ -20,6 +20,7 @@ export class ProductItemComponent implements OnInit {
 
   order(): void {
     this.productOrdered.emit(this.orderProduct);
+    alert(`Your Shopping cart has been updated successfully.`);
   }
 
 }

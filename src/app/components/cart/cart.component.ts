@@ -28,8 +28,8 @@ export class CartComponent implements OnInit {
         this.orderProducts = data;
         this.userOrderForm = this.fb.group(
           {
-            fullname: ['', [Validators.required]],
-            address: ['', [Validators.required]],
+            fullname: ['', [Validators.required, Validators.minLength(3)]],
+            address: ['', [Validators.required, Validators.minLength(6)]],
             creditCardNumber: ['', [Validators.required, Validators.pattern('^[0-9]{16,16}$')]],
           }
         )

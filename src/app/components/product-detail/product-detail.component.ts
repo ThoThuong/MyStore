@@ -40,5 +40,6 @@ export class ProductDetailComponent implements OnInit {
 
   order(): void {
     this.productService.addToCart(this.orderProduct);
+    alert(`Your Shopping cart has been updated successfully.`);
   }
 }
