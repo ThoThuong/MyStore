@@ -1,0 +1,8 @@
+<div class="card-container">
+  <ng-container *ngFor="let product of products">
+    <a class="card" rel="noopener">
+
+      <div app-product-item [product]="product" (productOrdered)="order($event)"> </div>
+    </a>
+  </ng-container>
+</div>

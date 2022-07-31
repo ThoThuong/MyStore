@@ -1,0 +1,28 @@
+<div class="product-detail">
+  <ng-container *ngIf="product; else notFound">
+    <a class="card">
+      <div>
+        <img [src]="[product.url]" alt="product image">
+      </div>
+    </a>
+
+    <div class="product-action">
+      <h2>{{product.name ? product.name  : 'product_name'}}</h2>
+      <p>{{product.price | currency}}</p>
+      <p>{{product.description}}</p>
+      <div class="order">
+        <input type="number" class="number-of-product-input" min="1" [(ngModel)]="orderProduct.orderQuantity">
+        <button class="btn-add-product" (click)="order()"> Add </button>
+      </div>
+      <a [routerLink]="['/product-list/']"> Back to the Product list. </a>
+    </div>
+  </ng-container>
+
+
+  <ng-template #notFound>
+    <p> Oop! Something went wrong, please reload some time again from here.</p>
+
+  </ng-template>
+
+
+</div>

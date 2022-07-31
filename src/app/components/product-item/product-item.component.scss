@@ -1,0 +1,24 @@
+img {
+    width: 100%;
+}
+
+a {
+    color: unset;
+    text-decoration: none;
+}
+
+
+.wrapper-action-product-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .number-of-product-input {
+        width: 45%;
+    }
+
+    button {
+
+        margin-left: 5px;
+    }
+}
