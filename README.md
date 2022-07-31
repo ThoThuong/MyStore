@@ -28,5 +28,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Start Project
 
-Run ` npm i` to install denpendencies
-Run ` ng s --o` to start project.
+### To install denpendencies
+
+Run ` npm i`
+
+### To start project.
+
+Run ` ng s --o`
