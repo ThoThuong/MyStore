@@ -8,12 +8,11 @@ import { AppComponent } from './app.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ErrorsComponent } from './components/errors/errors.component';
 import { LayoutComponent } from './components/layout/layout.component';
-import { OrderComponent } from './components/order/order.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
-import { ProductListComponent } from './components/product-list/product-list.component';
-import { ToolBarComponent } from './components/tool-bar/tool-bar.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
 import { SuccessfullyOrderComponent } from './components/successfully-order/successfully-order.component';
+import { ToolBarComponent } from './components/tool-bar/tool-bar.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,6 @@ import { SuccessfullyOrderComponent } from './components/successfully-order/succ
     ProductListComponent,
     ProductDetailComponent,
     CartComponent,
-    OrderComponent,
     ErrorsComponent,
     ToolBarComponent,
     ProductItemComponent,

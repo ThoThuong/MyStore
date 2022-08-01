@@ -16,6 +16,9 @@
             <input type="number" class="number-of-product-input" min="1" [(ngModel)]="p.orderQuantity"
               (ngModelChange)="updateCart(p)">
           </div>
+          <div>
+            <button class="remove-product-cart" (click)="removeProductCart(p.id)"> Remove </button>
+          </div>
         </div>
 
       </div>
@@ -33,6 +36,10 @@
         <label for="fullname">User Name</label>
         <input id="fullname" formControlName="fullname" type="text" class="form-control" name="fullname"
           placeholder="(Minimum 3 characters)">
+        <small
+          *ngIf="userOrderForm.get('fullname')?.invalid && (userOrderForm.get('fullname')?.touched && userOrderForm.get('fullname')?.dirty)">
+          (Minimum
+          3 characters) </small>
 
       </div>
 
@@ -40,19 +47,23 @@
         <label for="address">Address</label>
         <input id="address" formControlName="address" type="text" class="form-control" name="address"
           placeholder="(Minimum 6 characters)">
-
+        <small
+          *ngIf="userOrderForm.get('address')?.invalid && (userOrderForm.get('address')?.touched && userOrderForm.get('address')?.dirty)">
+          (Minimum
+          6 characters) </small>
       </div>
 
       <div class="form-group">
         <label for="creditCardNumber">Credit Card Number: </label>
         <input id="creditCardNumber" formControlName="creditCardNumber" type="number" class="form-control"
           name="creditCardNumber" placeholder="(16-digit-number)">
-
+        <small
+          *ngIf="userOrderForm.get('creditCardNumber')?.invalid && (userOrderForm.get('creditCardNumber')?.touched || userOrderForm.get('creditCardNumber')?.dirty)">
+          (16-digit-number)</small>
       </div>
 
-      <span>We'll never share yout payment details with anyone else.</span>
+      <span class="policy">We'll never share yout payment details with anyone else.</span>
 
-      {{orderProducts.length}}
       <button class="btn-add-product" (click)="confirmOrder()"
         [disabled]="(!userOrderForm.valid || !orderProducts.length)"> Add
       </button>

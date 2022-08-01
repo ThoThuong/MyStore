@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { OrderProduct } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -8,16 +9,17 @@ import { ProductService } from 'src/app/services/product.service';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit, OnDestroy {
 
   isConfirmed = false;
   total = 0
   orderProducts!: OrderProduct[];
   userOrderForm!: FormGroup;
+  subscription: Subscription[] = [];
   constructor(private productService: ProductService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.productService.getCart().subscribe(
+    this.subscription.push(this.productService.getCart().subscribe(
       (data) => {
         this.total = data.reduce((acc, v) => {
           acc += v.price * v.orderQuantity;
@@ -33,7 +35,7 @@ export class CartComponent implements OnInit {
             creditCardNumber: ['', [Validators.required, Validators.pattern('^[0-9]{16,16}$')]],
           }
         )
-      })
+      }));
   }
 
 
@@ -58,5 +60,18 @@ export class CartComponent implements OnInit {
   }
 
 
+  removeProductCart(id: string): void {
+    this.orderProducts = this.orderProducts.filter(p => p.id !== id);
+    setTimeout(() => {
+      alert(`Your Shopping cart has been updated successfully.`);
+    }, 50);
+  }
+
+
+  ngOnDestroy(): void {
+    this.productService.updateCart(this.orderProducts);
+    this.subscription.forEach(s => s.unsubscribe());
+
+  }
 
 }

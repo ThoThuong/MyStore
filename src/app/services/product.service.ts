@@ -69,11 +69,7 @@ export class ProductService {
     return this.http.get<Product[] | Product>(endpoint).pipe(
       map((data: any) => {
         if (id) {
-          console.log(data);
-
           const productRp = data.find((p: any) => p?.id === id);
-          console.log(productRp);
-
           return productRp;
         }
         return data;
@@ -101,4 +97,7 @@ export class ProductService {
   }
 
 
+  updateCart(products: OrderProduct[]): void {
+    this.cart.next(products)
+  }
 }

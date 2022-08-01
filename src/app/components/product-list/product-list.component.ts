@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { OrderProduct, Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -7,13 +8,13 @@ import { ProductService } from 'src/app/services/product.service';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent implements OnInit {
-
+export class ProductListComponent implements OnInit, OnDestroy {
+  subscription: Subscription[] = []
   products!: Product[];
   constructor(private readonly productService: ProductService) { }
 
   ngOnInit(): void {
-    this.productService.get().subscribe(
+    this.subscription.push(this.productService.get().subscribe(
       (data: any) => {
         this.products = data;
       },
@@ -21,12 +22,15 @@ export class ProductListComponent implements OnInit {
         console.info(error);
         // redirect to error page
       }
-    )
+    ))
   }
 
   order(orderProduct: any): void {
-
     this.productService.addToCart(orderProduct)
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.forEach(s => s.unsubscribe());
   }
 
 }

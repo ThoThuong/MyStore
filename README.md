@@ -35,3 +35,27 @@ Run ` npm i`
 ### To start project.
 
 Run ` ng s --o`
+
+# Project Description
+
+## I. The features list for this project has been covered:
+
+### 1. A page with a product list, where we can view all of the products listed, including an image, name, price, and the option to add the product we want.
+
+### 2. Visit the product detail page to learn more about the product's name, price, image, and description, and to add it to your shopping cart.
+
+### 3. The shopping cart page, where you can make changes to your shopping cart before submitting your order.
+
+### 4. A confirmation page informing you of the status of your order.
+
+## II. The structure of this project:
+
+### 1. App Module: This module contains app dependencies for modules, components, and configuration.
+
+### 2. Service Product: provides an API to retrieve the product(s) and modify the shopping cart.
+
+### 3. App.Routing Module: This module will route the end user to the correct page.
+
+### 4. List of Components: directly structure the user interface and functions as listed in the feature list above. Their cart, layout, errors, product-detail, product-item, product-list, successfully-order, and tool-bar are all components included in the project mine
+
+### 5. Models folder: Includes all interface has been used on this project.
