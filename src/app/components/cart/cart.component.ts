@@ -51,6 +51,10 @@ export class CartComponent implements OnInit, OnDestroy {
         return acc;
       }, 0);
     }
+
+    setTimeout(() => {
+      alert(`Your Shopping cart has been updated successfully.`);
+    }, 50);
   }
 
   confirmOrder(): void {
