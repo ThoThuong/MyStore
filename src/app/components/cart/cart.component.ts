@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { OrderProduct } from 'src/app/models/product';
@@ -11,6 +11,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class CartComponent implements OnInit, OnDestroy {
 
+  username = 'ThuongTN';
   isConfirmed = false;
   total = 0
   orderProducts!: OrderProduct[];
@@ -46,7 +47,6 @@ export class CartComponent implements OnInit, OnDestroy {
       this.orderProducts[index]['orderQuantity'] = p.orderQuantity;
 
       this.total = this.orderProducts.reduce((acc, v) => {
-
         acc += v.price * v.orderQuantity;
         return acc;
       }, 0);
@@ -66,6 +66,11 @@ export class CartComponent implements OnInit, OnDestroy {
 
   removeProductCart(id: string): void {
     this.orderProducts = this.orderProducts.filter(p => p.id !== id);
+    this.total = this.orderProducts.reduce((acc, v) => {
+      acc += v.price * v.orderQuantity;
+      return acc;
+    }, 0);
+
     setTimeout(() => {
       alert(`Your Shopping cart has been updated successfully.`);
     }, 50);

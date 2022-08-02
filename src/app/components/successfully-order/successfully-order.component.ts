@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SuccessfullyOrderComponent implements OnInit {
 
+  @Input() username!: string;
   @Input() total!: number;
   constructor() { }
   ngOnInit(): void {
